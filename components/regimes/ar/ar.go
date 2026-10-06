@@ -88,12 +88,17 @@ func TourismPayable(inv *bill.Invoice, payable num.Amount) num.Amount {
 }
 
 // CalculateDuePayable subtracts a due date's share of the reintegro, mirroring TourismPayable.
+// FORK NOTE (larsartmann): pay.DueDate.Amount became *num.Amount in GOBL v0.505; a due date
+// without an amount reports zero here (the AR tourism path always carries amounts).
 func CalculateDuePayable(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
+	if dd.Amount == nil {
+		return num.MakeAmount(0, 2)
+	}
 	refund := tourismRefund(inv)
 	if refund.IsZero() || inv.Totals == nil || inv.Totals.Payable.IsZero() {
-		return dd.Amount
+		return *dd.Amount
 	}
-	share := refund.Multiply(dd.Amount).Divide(inv.Totals.Payable)
+	share := refund.Multiply(*dd.Amount).Divide(inv.Totals.Payable)
 	return dd.Amount.Subtract(share)
 }
 
