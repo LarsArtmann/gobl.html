@@ -7,7 +7,7 @@ require (
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/invopop/ctxi18n v0.9.0
 	github.com/invopop/gobl v0.507.0
-	github.com/invopop/gobl.dev v0.507.1
+	github.com/invopop/gobl.dev v0.505.2
 	github.com/invopop/gobl.mx.cfdi v0.65.0
 	github.com/invopop/gobl.pt.saft v0.0.8
 	github.com/invopop/gobl.sa.zatca v0.0.4
@@ -26,7 +26,7 @@ require (
 )
 
 require (
-	github.com/invopop/gobl.dk.oioubl v0.0.6 // indirect
+	github.com/invopop/gobl.dk.oioubl v0.0.1 // indirect
 	github.com/invopop/gobl.fi.finvoice v0.0.2 // indirect
 	github.com/invopop/gobl.it.sdi v0.77.0 // indirect
 )
